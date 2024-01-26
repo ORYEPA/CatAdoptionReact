@@ -6,6 +6,8 @@ import Layout from "../../Components/Layout"
 import CardContainer from "../../Components/Card"
 import { data } from "autoprefixer";
 import Description from "../../Components/Description";
+import CheckoutAdoption from  "../../Components/CheckoutAdoption"
+import CheckoutDonation from  "../../Components/CheckoutDonation"
 
 function Home() {
  
@@ -44,6 +46,8 @@ function Home() {
             }
             </div>
             <Description/>
+            <CheckoutAdoption />
+            <CheckoutDonation />
         </Layout>
     
   )

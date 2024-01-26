@@ -40,8 +40,12 @@ const Navbar = () => {
             </div>
             <div className='flex items-center space-x-4'>
                 <span className='text-green-400 text-sm'>user@gmai.com</span>
-                <img src='./src/assets/adoption.svg' alt='' className='w-20 p-5'/>
-                <img src='./src/assets/donate.svg' alt='' className='w-20 p-5'/> <p className='absolute bottom-2 right-4   rounded-full  '>{context.count}</p>
+                <img src='./src/assets/adoption.svg' alt='Adoptar' 
+                className='w-20 p-5 cursor-pointer'
+                onClick={() => context.OpenAdoption()}/> <p className='absolute bottom-2 right-28  rounded-full '>{context.countAdoption}</p>
+                <img src='./src/assets/donate.svg' alt='Donar' className='w-20 p-5 cursor-pointer'
+                onClick={() => context.OpenDonation()}
+                /> <p className='absolute bottom-2 right-4   rounded-full  '>{context.count}</p>
             </div>
         </nav>
 

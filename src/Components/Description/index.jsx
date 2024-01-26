@@ -10,7 +10,7 @@ const Description = () => {
         rounded-lg bg-white border-green-300 h-[calc(100vh-80px)] w-[360px]` }>
             <div className="flex justify-between items-center p-6">
                 <h2 className="font-medium text-xl"> Description</h2> 
-                <img src="/src/assets/close.svg" alt="" className="w-9 h-9 cursor-pointer" 
+                <img src="./src/assets/close.svg" alt="" className="w-9 h-9 cursor-pointer" 
                 onClick={() => context.CloseDrescription()}/>
 
                 
