@@ -1,5 +1,5 @@
 const OrderAdoption = adopt =>{
-    const { id, name, url , genero } = adopt
+    const { id, name, url , priceDonation } = adopt
     return (
         <div className="flex justify-between items-center mb-2">
             <div className="flex items-center gap-2">
@@ -8,12 +8,7 @@ const OrderAdoption = adopt =>{
                 </figure>
             </div>
             <p className="text-lg font-medium">{name}</p>
-            <div>
-                <div className="flex items-center gap-2">
-                    <p className="text-sm font-light">{genero}</p>
-                    <img className="w-6 h-6" src="./src/assets/close.svg" alt="" />
-                </div>
-            </div>
+            
         </div>
     )
 }

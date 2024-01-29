@@ -1,4 +1,4 @@
-import { createContext,useState } from "react";
+import { createContext,useState, useTransition } from "react";
 
  export const DonateContext = createContext ();
 
@@ -7,7 +7,7 @@ import { createContext,useState } from "react";
 
 export const DonateProvider = ({ children}) => {
     //cuenta de donacion
-    const [count, setCount] = useState(0);
+    const [countDonation, setCountDonation] = useState(0);
     //cuenta de adopcion
     const [countAdoption, setCountAdoption] = useState(0);
     
@@ -36,11 +36,15 @@ export const DonateProvider = ({ children}) => {
     //donaciones
     const [donation, setDonations] = useState([])
 
+    //oderDonation
+    const [orderDonation,setOrderDonation] =useState ([])
+
+
     
     return(
         <DonateContext.Provider value={{
-            count,
-            setCount,
+            countDonation,
+            setCountDonation,
             OpenDrescription,
             CloseDrescription,
             isdescriptionOpen,
@@ -57,7 +61,10 @@ export const DonateProvider = ({ children}) => {
             OpenDonation,
             CloseDonation,
             donation,
-            setDonations
+            setDonations,
+            orderDonation,
+            setOrderDonation
+           
         }}>
             {children}
         </DonateContext.Provider>

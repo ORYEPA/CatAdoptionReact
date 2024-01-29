@@ -1,9 +1,12 @@
 import { useContext } from 'react';
 import { DonateContext } from '../../Context'
+import { useState } from "react";
+
  export const CardContainer = ({data}) => {
     const context = useContext(DonateContext)
+    const [priceDonation,setDonationPrice]= useState(0);
     const handleInputChange = (event) => {
-        context.setCount(Number(event.target.value));
+        setDonationPrice(Number(event.target.value));
     };
     const ShowDescription = (infoDetail) => {
         context.OpenDrescription()
@@ -18,10 +21,11 @@ import { DonateContext } from '../../Context'
     }
     const AddToDonation= (event, dataDonation) => {
         event.stopPropagation()
-        context.setDonations([...context.donation,dataDonation])
-
-        context.OpenDonation()
+        context.setCountDonation(context.countDonation + 1)
         
+    
+        context.setDonations([...context.donation, dataDonation]);
+        context.OpenDonation();
 
     }
     const renderDonateIcon  = (id) => {
@@ -36,7 +40,7 @@ import { DonateContext } from '../../Context'
             ):
             (
                 <button className=' mt-2 bg-green-400 rounded-lg w-44 h-8'
-            onClick={(event) => AddToDonation(event,data)}>Donar</button>
+            onClick={(event) => AddToDonation(event,data,priceDonation)}>Donar</button>
 
             )
 
@@ -102,11 +106,11 @@ import { DonateContext } from '../../Context'
                             
                             <div className='grid grid-cols-3 items-center'>
                                 <button className="bg-green-400 w-9 h-9 rounded-full " 
-                                onClick={() => context.setCount(context.count - 1)}>-</button>
-                                <input className='' type="number" value={context.count} onChange={handleInputChange} />
-
+                                onClick={() => setDonationPrice(priceDonation - 1)}>-</button>
+                                <input className='' type="number" value={priceDonation}  onChange={handleInputChange} />
                                 <button className="bg-green-400 w-9 h-9 rounded-full"  
-                                onClick={() => context.setCount(context.count + 1)}>+</button>
+                                onClick={() => setDonationPrice(priceDonation + 1)}>+</button>
+
                                 {renderDonateIcon (data.id)}
 
                             </div> 

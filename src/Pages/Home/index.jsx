@@ -27,7 +27,7 @@ function Home() {
           url: item.url,
           nombre: item.breeds[0].name,
           description:item.breeds[0].description,
-          genero: generarGenero(),
+          genero: generarGenero()
         }));
         setInfo(infoDeGatos);
       });

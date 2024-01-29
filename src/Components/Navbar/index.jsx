@@ -45,7 +45,7 @@ const Navbar = () => {
                 onClick={() => context.OpenAdoption()}/> <p className='absolute bottom-2 right-28  rounded-full '>{context.countAdoption}</p>
                 <img src='./src/assets/donate.svg' alt='Donar' className='w-20 p-5 cursor-pointer'
                 onClick={() => context.OpenDonation()}
-                /> <p className='absolute bottom-2 right-4   rounded-full  '>{context.count}</p>
+                /> <p className='absolute bottom-2 right-4   rounded-full  '>{context.countDonation}</p>
             </div>
         </nav>
 
