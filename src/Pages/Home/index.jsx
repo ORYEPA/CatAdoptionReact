@@ -17,12 +17,10 @@ function Home() {
   
 
   const renderView = () => {
-    console.log('dentro de render view')
-    console.log(typeof(context.search))
+    
     if(context.search?.length > 0){
-      console.log('dentro del priemer if')
       if(context.infoFiltered?.length > 0){
-        console.log('segundo if')
+ 
         return(
           context.infoFiltered?.map(info => (
             <CardContainer key={info.id} data={info} />
@@ -37,7 +35,7 @@ function Home() {
       }
       }
       else{
-        console.log('else')
+ 
         return(
           <div className="grid gap-4 grid-cols-2 w-full max-w-screen-lg">
             {
