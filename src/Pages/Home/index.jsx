@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import axios from 'axios';
 
 
@@ -8,43 +8,60 @@ import { data } from "autoprefixer";
 import Description from "../../Components/Description";
 import CheckoutAdoption from  "../../Components/CheckoutAdoption"
 import CheckoutDonation from  "../../Components/CheckoutDonation"
+import { useContext } from 'react';
+import { DonateContext } from '../../Context'
 
 function Home() {
- 
-  const [info, setInfo] = useState([]);
+  const context = useContext(DonateContext)
 
- 
 
-  const generarGenero = () => Math.random() < 0.5 ? 'Macho' : 'Hembra';
 
-  useEffect(() => {
-    fetch('https://api.thecatapi.com/v1/images/search?limit=25&has_breeds=true&api_key=live_3yLYQDNcJuzGD7LxRbfTRRRAGsvH0w28vHu5oWlek2VFmwvt65uO0OCqfTdePt8y')
-      .then(response => response.json())
-      .then(data => {
-        
-        const infoDeGatos = data.map(item => ({
-          id: item.id,
-          url: item.url,
-          nombre: item.breeds[0].name,
-          description:item.breeds[0].description,
-          genero: generarGenero()
-        }));
-        setInfo(infoDeGatos);
-      });
-  }, []);
+  const renderView = () => {
+    if(context.search?.lenght > 0){
+      if(context.infoFiltered?.lenght > 0){
+        return(
+          context.infoFiltered?.map(info => (
+            <CardContainer key={info.id} data={info} />
+
+          ))
+        )
+      }
+      else{
+        return (
+          <div>No hay nada :c</div>
+        )
+      }
+      }
+      else{
+        return(
+          <div className="grid gap-4 grid-cols-2 w-full max-w-screen-lg">
+            {
+              context.info?.map(info=>(
+                <CardContainer key={info.id} data={info} />
+              ))
+            }
+            </div>
+        )
+      
+    }
+      
+
+    
+  }
+
 
 
   return (
     
         <Layout>
+          <div className="flex items-center justify-center relative w-80 mb-4">
+            <h1 className="font-medium text-xl">Todos</h1>
+          </div>
+          <input type="text" placeholder="Buscar"
+          className="rounded-lg border border-black w-60 p-4 mb-8 focus:outline-none" 
+          onChange={(event)=> context.setSearch(event.target.value)}/>
             
-            <div className="grid gap-4 grid-cols-2 w-full max-w-screen-lg">
-            {
-              info?.map(info=>(
-                <CardContainer key={info.id} data={info} />
-              ))
-            }
-            </div>
+            {renderView()}
             <Description/>
             <CheckoutAdoption />
             <CheckoutDonation />

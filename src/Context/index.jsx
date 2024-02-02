@@ -1,4 +1,4 @@
-import { createContext,useState, useTransition } from "react";
+import { createContext,useState, useTransition, useEffect } from "react";
 
  export const DonateContext = createContext ();
 
@@ -39,6 +39,44 @@ export const DonateProvider = ({ children}) => {
     //oderDonation
     const [orderDonation,setOrderDonation] =useState ([])
 
+    //get info
+    const [info, setInfo] = useState(null);
+    //filtrado
+    const [infoFiltered, setInfoFiltered] = useState(null);
+    //search
+    const [search, setSearch] = useState(null);
+    console.log(search)
+     
+
+    const generarGenero = () => Math.random() < 0.5 ? 'Macho' : 'Hembra';
+
+    useEffect(() => {
+        fetch('https://api.thecatapi.com/v1/images/search?limit=25&has_breeds=true&api_key=live_3yLYQDNcJuzGD7LxRbfTRRRAGsvH0w28vHu5oWlek2VFmwvt65uO0OCqfTdePt8y')
+        .then(response => response.json())
+        .then(data => {
+            
+            const infoDeGatos = data.map(item => ({
+            id: item.id,
+            url: item.url,
+            nombre: item.breeds[0].name,
+            description:item.breeds[0].description,
+            genero: generarGenero()
+            }));
+            setInfo(infoDeGatos);
+        });
+    }, []);
+
+    const filteredInfoFuntion = (info,search) => {
+
+        return info?.filter(info => info.nombre.toLowerCase().includes(search.toLowerCase()))
+
+    }
+    useEffect(() => {
+       if(search)setInfoFiltered(filteredInfoFuntion(info,search))
+    }, [info,search]);
+    
+    console.log(infoFiltered)
+
 
     
     return(
@@ -63,7 +101,13 @@ export const DonateProvider = ({ children}) => {
             donation,
             setDonations,
             orderDonation,
-            setOrderDonation
+            setOrderDonation,
+            setInfo,
+            info,
+            search,
+            setSearch,
+            infoFiltered,
+            setInfoFiltered
            
         }}>
             {children}
