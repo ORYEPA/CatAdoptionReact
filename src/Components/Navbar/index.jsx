@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom'
 
 import { useContext } from 'react';
 import { DonateContext } from '../../Context'
+import Logo from '../../assets/logo.svg';
 
 const Navbar = () => {
     const context = useContext(DonateContext)
@@ -10,7 +11,7 @@ const Navbar = () => {
         <nav className='top-0 flex justify-between fixed w-full border-b border-green-300 bg-white'>
             <img src='./src/assets/menu.svg' alt='menu' className='w-12 block md:hidden'/>
             <div className='flex'>
-                <img src='./src/assets/logo.svg' alt='logo' className='w-20'/>
+                <img src={Logo} alt='logo' className='w-20'/>
                 <ul className='flex items-center list-none p-0 m-0 ml-4 space-x-4 hidden md:flex'>
                     <li>
                         <NavLink
