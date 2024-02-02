@@ -18,34 +18,36 @@ function Home() {
 
   const renderView = () => {
     
-    if(context.search?.length > 0){
-      if(context.infoFiltered?.length > 0){
- 
-        return(
-          context.infoFiltered?.map(info => (
-            <CardContainer key={info.id} data={info} />
+    
+    if(context.infoFiltered?.length > 0){
+      console.log('dentro del if de info filtrada')
 
-          ))
-        )
-      }
-      else{
-        return (
-          <div>No hay nada :c</div>
-        )
-      }
-      }
-      else{
- 
-        return(
-          <div className="grid gap-4 grid-cols-2 w-full max-w-screen-lg">
-            {
-              context.info?.map(info=>(
-                <CardContainer key={info.id} data={info} />
-              ))
-            }
-            </div>
-        )
+      return(
+        <div className="grid gap-4 grid-cols-2 w-full max-w-screen-lg">
+          {
+            context.infoFiltered?.map(info=>(
+              <CardContainer key={info.id} data={info} />
+            ))
+          }
+          </div>
+
+      )
+    }
       
+      
+    else{
+      console.log('entra al else')
+
+      return(
+        <div className="grid gap-4 grid-cols-2 w-full max-w-screen-lg">
+          {
+            context.info?.map(info=>(
+              <CardContainer key={info.id} data={info} />
+            ))
+          }
+          </div>
+      )
+    
     }
       
 

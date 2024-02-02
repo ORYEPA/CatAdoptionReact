@@ -17,7 +17,10 @@ const Navbar = () => {
                         to='/todos'>
                         <a href='' className='text-green-600 border border-white px-2 py-1 
                         rounded-md text-md hover:bg-green-300 hover:text-gray-800
-                        hover:border-green-300'>Todos</a>
+                        hover:border-green-300'
+                        onClick={() => context.setSearchGender()}
+                        >Todos</a>
+                        
                         </NavLink>
                     </li>
                     <li>
@@ -25,7 +28,8 @@ const Navbar = () => {
                             to='/Machos'>
                         <a href='' className='text-green-600 border border-white px-2 py-1 
                         rounded-md text-md hover:bg-green-300 hover:text-gray-800
-                        hover:border-green-300'>Machos</a>
+                        hover:border-green-300'
+                        onClick={() => context.setSearchGender("Macho")}>Machos</a>
                         </NavLink>
                     </li>
                     <li>
@@ -33,7 +37,8 @@ const Navbar = () => {
                         to='/Hembras'>
                         <a href='' className='text-green-600 border border-white px-2 py-1
                         rounded-md text-md hover:bg-green-300 hover:text-gray-800
-                        hover:border-green-300'>Hembras</a>
+                        hover:border-green-300'
+                        onClick={() => context.setSearchGender("Hembra")}>Hembras</a>
                         </NavLink>
                     </li>
                 </ul>
