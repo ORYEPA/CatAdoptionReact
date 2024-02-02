@@ -45,7 +45,7 @@ export const DonateProvider = ({ children}) => {
     const [infoFiltered, setInfoFiltered] = useState(null);
     //search
     const [search, setSearch] = useState(null);
-    console.log(search)
+    
      
 
     const generarGenero = () => Math.random() < 0.5 ? 'Macho' : 'Hembra';
@@ -75,7 +75,6 @@ export const DonateProvider = ({ children}) => {
        if(search)setInfoFiltered(filteredInfoFuntion(info,search))
     }, [info,search]);
     
-    console.log(infoFiltered)
 
 
     
